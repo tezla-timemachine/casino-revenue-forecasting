@@ -9,6 +9,8 @@ Each run happens when the Board publishes a new month. For each market it:
      the one with the lower 12-month MAPE is recommended (D51)
   6. on the live run, makes the next forecast from the production model, with a fallback (D34, D38),
      records the model version and last retraining date (D39)
+  7. puts an 80% range around every forecast, from the model's own past misses, and tracks how often
+     the actual lands inside it; too few inside raises the range alert (D53)
 
     .venv/bin/python scripts/monitor.py
 
@@ -31,6 +33,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import forecast_next as fn  # next forecasts, fitted as in the backtest
 import bottom_up as bu      # bottom-up forecasts (D50, D51)
+import ranges as rg         # 80% ranges (D53)
 
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN, EXTRACTED, MODEL = ROOT / "data" / "clean", ROOT / "data" / "extracted", ROOT / "data" / "model"
@@ -41,6 +44,7 @@ TEST_START = "2023-03"
 MARGIN, LONG_TOLERANCE, RUN = 0.005, 0.0025, 3        # D32
 SLOW_ABOVE, CAPACITY_CHANGE = 0.015, 0.05              # D37
 LATE_DAYS = 7                                          # D38
+RANGE_MIN_INSIDE = 7                                   # D53: alert at 7 or fewer of the last 12 inside the 80% range
 
 
 def shift(month: str, n: int) -> str:
@@ -124,6 +128,7 @@ def main() -> None:
 
     status_rows, scored = [], {m: {} for m in MARKETS}
     run_count = {}  # (market, challenger) -> months in a row passing
+    inside = {m: [] for m in MARKETS}  # did each month's actual land inside the production forecast's range?
     for month in test_months:
         for market in MARKETS:
             prod = production_for(registry, market, month)
@@ -142,6 +147,12 @@ def main() -> None:
             hist = scored[market][champ]
             f = forecasts[(market, champ, month)]
             row.update(actual_m=round(actual / 1e6, 1), forecast_m=round(f / 1e6, 1), miss_pct=f"{(actual - f) / actual:+.1%}")
+            lo, hi = rg.forecast_range(market, champ, month, f)
+            if lo is not None:
+                inside[market].append(lo <= actual <= hi)
+                row.update(range_low_m=round(lo / 1e6, 1), range_high_m=round(hi / 1e6, 1), in_range="yes" if lo <= actual <= hi else "no")
+            if len(inside[market]) >= 12:
+                row["in_range_12m"] = f"{sum(inside[market][-12:])} of 12"
             last12 = [(a, ff) for _, a, ff in hist[-12:]]
             if len(last12) >= 3:
                 m12 = metrics(last12)
@@ -159,6 +170,8 @@ def main() -> None:
                 for f_ in ("table_units", "slot_units"):
                     if now[f_] and before[f_] and abs(float(now[f_]) / float(before[f_]) - 1) > CAPACITY_CHANGE:
                         alerts.append(f"capacity: {f_.replace('_units', 's')} {float(now[f_]) / float(before[f_]) - 1:+.1%} on a year earlier")
+            if len(inside[market]) >= 12 and sum(inside[market][-12:]) <= RANGE_MIN_INSIDE:
+                alerts.append(f"range: only {sum(inside[market][-12:])} of the last 12 months inside the 80% range")
             row["alerts"] = "; ".join(alerts)
             row["status"] = "Investigate" if alerts else "Healthy"
             # Promotion check (D32), each Challenger against the Champion: needs 12 scored months for both.
@@ -195,6 +208,10 @@ def main() -> None:
     due = dt.date(int(shift(newest, 3)[:4]), int(shift(newest, 3)[5:]), 1) - dt.timedelta(days=1)
     late = today > due + dt.timedelta(days=LATE_DAYS)
     rules = ("baseline same month last year", bu.NAME_A)  # no settings to re-learn
+    def with_range(entry, market, model):
+        lo, hi = rg.forecast_range(market, model, target, entry["forecast_m"])
+        return {**entry, "range_low_m": round(lo, 1) if lo is not None else "", "range_high_m": round(hi, 1) if hi is not None else ""}
+
     for market in MARKETS:
         prod = production_for(registry, market, target)
         r = nxt[market]
@@ -206,18 +223,19 @@ def main() -> None:
         value, note = values.get(prod["model"], ""), ""
         if prod["model"] != "baseline same month last year" and (value == "" or mix_fails or fails):
             value, note = values["baseline same month last year"], "fallback to 'same month last year' (D34, D38)"
-        log.append({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "production",
-                    "model": prod["model"], "version": prod["version"], "forecast_m": value, "note": note,
-                    "last_retrained": "not applicable" if prod["model"] in rules else newest})
+        used = "baseline same month last year" if note else prod["model"]
+        log.append(with_range({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "production",
+                               "model": prod["model"], "version": prod["version"], "forecast_m": value, "note": note,
+                               "last_retrained": "not applicable" if prod["model"] in rules else newest}, market, used))
         for chall in prod["challengers"]:
-            log.append({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "challenger",
-                        "model": chall, "version": "", "forecast_m": values.get(chall, ""),
-                        "note": "" if values.get(chall, "") != "" else "inputs missing",
-                        "last_retrained": "not applicable" if chall in rules else newest})
+            log.append(with_range({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "challenger",
+                                   "model": chall, "version": "", "forecast_m": values.get(chall, ""),
+                                   "note": "" if values.get(chall, "") != "" else "inputs missing",
+                                   "last_retrained": "not applicable" if chall in rules else newest}, market, chall))
 
     with (MON / "monthly_status.csv").open("w", newline="") as fh:
         fields = ["data_to", "market", "model", "version", "challenger", "data_check", "actual_m", "forecast_m", "miss_pct",
-                  "mape_12m", "mae_12m_m", "rmse_12m_m", "bias_12m_m", "alerts", "status", "promotion_check"]
+                  "range_low_m", "range_high_m", "in_range", "in_range_12m", "mape_12m", "mae_12m_m", "rmse_12m_m", "bias_12m_m", "alerts", "status", "promotion_check"]
         w = csv.DictWriter(fh, fieldnames=fields); w.writeheader(); w.writerows(status_rows)
     with (MON / "forecast_log.csv").open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(log[0])); w.writeheader(); w.writerows(log)
@@ -226,14 +244,18 @@ def main() -> None:
     lines = [f"# Monitoring report: data to {newest}", "",
              f"Run on {today:%d %B %Y}. Next release (data for {shift(newest, 1)}) expected by {due:%d %B %Y}; "
              f"{'LATE: alert raised' if late else 'not late'} (D38).", "", "## This month", "",
-             "| Market | Model in use (version) | Data check | Actual | Forecast | Miss | 12-month MAPE | Bias (12 months) | Status | Alerts | Promotion check |",
-             "|---|---|---|---|---|---|---|---|---|---|---|"]
+             "| Market | Model in use (version) | Data check | Actual | Forecast | 80% range | Miss | Inside range (last 12) | 12-month MAPE | Bias (12 months) | Status | Alerts | Promotion check |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in latest:
         money = lambda k: f"${r[k]}m" if r.get(k) not in (None, "") else "-"
-        lines.append(f"| {r['market']} | {r['model']} ({r['version']}) | {r['data_check']} | {money('actual_m')} | {money('forecast_m')} | "
-                     f"{r.get('miss_pct') or '-'} | {r.get('mape_12m') or '-'} | {money('bias_12m_m')} | **{r['status']}** | {r.get('alerts') or '-'} | {r.get('promotion_check') or '-'} |")
-    lines += ["", f"## Next forecast: {target}", "", "| Market | Role | Model | Version | Forecast | Last retrained (data to) | Note |", "|---|---|---|---|---|---|---|"]
-    lines += [f"| {r['market']} | {r['role']} | {r['model']} | {r['version']} | ${r['forecast_m']}m | {r['last_retrained']} | {r['note'] or '-'} |" for r in log]
+        rng = f"${r['range_low_m']}m to ${r['range_high_m']}m" if r.get("range_low_m") not in (None, "") else "-"
+        lines.append(f"| {r['market']} | {r['model']} ({r['version']}) | {r['data_check']} | {money('actual_m')} | {money('forecast_m')} | {rng} | "
+                     f"{r.get('miss_pct') or '-'} | {r.get('in_range_12m') or '-'} | {r.get('mape_12m') or '-'} | {money('bias_12m_m')} | **{r['status']}** | {r.get('alerts') or '-'} | {r.get('promotion_check') or '-'} |")
+    lines += ["", f"## Next forecast: {target}", "", "8 months in 10, the actual should land inside the 80% range (D53).", "",
+              "| Market | Role | Model | Version | Forecast | 80% range | Last retrained (data to) | Note |", "|---|---|---|---|---|---|---|---|"]
+    lines += [f"| {r['market']} | {r['role']} | {r['model']} | {r['version']} | ${r['forecast_m']}m | "
+              + (f"${r['range_low_m']}m to ${r['range_high_m']}m" if r["range_low_m"] != "" else "-")
+              + f" | {r['last_retrained']} | {r['note'] or '-'} |" for r in log]
     lines += ["", "## Replay since March 2023", ""]
     for market in MARKETS:
         rows = [r for r in status_rows if r["market"] == market]

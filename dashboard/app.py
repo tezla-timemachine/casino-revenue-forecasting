@@ -24,12 +24,14 @@ st.set_page_config(page_title="Revenue forecast monitoring", page_icon="📈", l
 @st.cache_data
 def load():
     status = pd.read_csv(MON / "monthly_status.csv", dtype=str)
-    for c in ("actual_m", "forecast_m", "mae_12m_m", "rmse_12m_m", "bias_12m_m"):
+    for c in ("actual_m", "forecast_m", "range_low_m", "range_high_m", "mae_12m_m", "rmse_12m_m", "bias_12m_m"):
         status[c] = pd.to_numeric(status[c], errors="coerce")
     status["miss"] = pd.to_numeric(status["miss_pct"].str.rstrip("%"), errors="coerce")
     status["mape12"] = pd.to_numeric(status["mape_12m"].str.rstrip("%"), errors="coerce")
     status["date"] = pd.to_datetime(status["data_to"])
     log = pd.read_csv(MON / "forecast_log.csv", dtype=str)
+    for c in ("forecast_m", "range_low_m", "range_high_m"):
+        log[c] = pd.to_numeric(log[c], errors="coerce")
     win = pd.read_csv(CLEAN / "monthly_win.csv", dtype={"month": str})
     win["date"] = pd.to_datetime(win["month"])
     win["win_m"] = win["gaming_win"].astype(float) / 1e6
@@ -51,6 +53,12 @@ prod_next = nxt[nxt["role"] == "production"].iloc[0]
 chal_next = nxt[nxt["role"] == "challenger"]  # one or more (D51)
 th = thresholds[f"{market}|{latest['model']}"]
 
+
+def range_text(r):
+    """The 80% range (D53) as text, or a note when the model has too little history."""
+    return f"80% range: \\${r['range_low_m']:,.0f}m to \\${r['range_high_m']:,.0f}m" if pd.notna(r["range_low_m"]) else "No range yet (too little history)"
+
+
 # ---- 15.11 health, 15.6 production model, 15.7 version --------------------------------------------
 colour = STATUS_COLOURS.get(latest["status"], "#555")
 st.markdown(f"## {market} &nbsp; <span style='background:{colour};color:white;padding:4px 12px;border-radius:12px;font-size:0.7em'>"
@@ -60,15 +68,17 @@ st.caption(f"Latest data: {latest['date']:%B %Y}. Status rule: fast, slow and ca
 st.markdown(f"**In production for the next forecast:** {prod_next['model']} ({prod_next['version']}) &nbsp;·&nbsp; "
             f"**{'Challengers' if len(chal_next) > 1 else 'Challenger'}:** {' · '.join(chal_next['model'])}")
 month_label = f"{pd.to_datetime(prod_next['forecast_month']):%b %Y}"
-c = st.columns(4 + len(chal_next))
+c = st.columns(2 + len(chal_next))
 c[0].metric("Production version", prod_next["version"], help="From data/monitoring/production.json; the registry is in MLflow")
 c[1].metric(f"Forecast, {month_label}", f"${float(prod_next['forecast_m']):,.1f}m", help="From the production model" + (f". {prod_next['note']}" if isinstance(prod_next['note'], str) and prod_next['note'] else ""))
+c[1].caption(f"**{range_text(prod_next)}**")
 for i, (_, ch) in enumerate(chal_next.iterrows()):
     c[2 + i].metric(f"Challenger forecast, {month_label}", f"${float(ch['forecast_m']):,.1f}m" if pd.notna(ch["forecast_m"]) else "n/a", help=ch["model"])
-    c[2 + i].caption(ch["model"])
-c[-2].metric("Last retrained", prod_next["last_retrained"] if prod_next["last_retrained"] != "not applicable" else "n/a (a rule)",
-             help="Models that learn settings re-learn them monthly (D39)")
-c[-1].metric("Data check, latest month", "Pass" if latest["data_check"] == "pass" else "Fail", help=latest["data_check"])
+    c[2 + i].caption(f"{ch['model']}. {range_text(ch)}")
+c = st.columns(2 + len(chal_next))
+c[0].metric("Last retrained", prod_next["last_retrained"] if prod_next["last_retrained"] != "not applicable" else "n/a (a rule)",
+            help="Models that learn settings re-learn them monthly (D39)")
+c[1].metric("Data check, latest month", "Pass" if latest["data_check"] == "pass" else "Fail", help=latest["data_check"])
 
 # ---- 15.8 latest evaluation metrics ------------------------------------------------------------
 st.subheader("Latest measures (last 12 months)")
@@ -83,11 +93,16 @@ m[3].metric("Bias", f"${latest['bias_12m_m']:+.1f}m", help="Positive = forecasts
 st.subheader("Actual against forecast, and the miss each month")
 lines = s.melt(id_vars="date", value_vars=["actual_m", "forecast_m"], var_name="series", value_name="win")
 lines["series"] = lines["series"].map({"actual_m": "Actual", "forecast_m": "Forecast"})
+band = alt.Chart(s.dropna(subset=["range_low_m"])).mark_area(color="#d98c1f", opacity=0.15).encode(
+    x="date:T", y=alt.Y("range_low_m:Q", title="Gaming win, $m", scale=alt.Scale(zero=False)), y2="range_high_m:Q",
+    tooltip=[alt.Tooltip("date:T", format="%b %Y"), alt.Tooltip("range_low_m:Q", title="80% range, low", format=",.1f"),
+             alt.Tooltip("range_high_m:Q", title="80% range, high", format=",.1f")])
 chart = alt.Chart(lines).mark_line(point=True).encode(
     x=alt.X("date:T", title=None), y=alt.Y("win:Q", title="Gaming win, $m", scale=alt.Scale(zero=False)),
     color=alt.Color("series:N", scale=alt.Scale(range=["#1f3b57", "#d98c1f"]), title=None),
-    tooltip=[alt.Tooltip("date:T", format="%b %Y"), "series", alt.Tooltip("win:Q", format=",.1f")]).properties(height=280)
-st.altair_chart(chart, use_container_width=True)
+    tooltip=[alt.Tooltip("date:T", format="%b %Y"), "series", alt.Tooltip("win:Q", format=",.1f")])
+st.altair_chart((band + chart).properties(height=280), use_container_width=True)
+st.caption("Shaded: the forecast's 80% range, from the model's own past misses (D53). 8 months in 10 should land inside.")
 bars = alt.Chart(s).mark_bar().encode(
     x=alt.X("date:T", title=None), y=alt.Y("miss:Q", title="Miss, % of actual"),
     color=alt.condition(f"abs(datum.miss) > {th['bad_month'] * 100}", alt.value("#c62828"), alt.value("#8aa4bf")),
@@ -106,10 +121,12 @@ st.caption(f"Dashed line: slow-alert level, {th['normal'] + 0.015:.1%} (normal {
 
 # ---- 15.9 drift status --------------------------------------------------------------------------
 st.subheader("Drift and alerts")
-d = st.columns(3)
+d = st.columns(4)
 last12 = s.tail(12)
 d[0].metric("Status this month", latest["status"])
 d[1].metric("Months flagged in the last 12", int((last12["status"] != "Healthy").sum()))
+d[3].metric("Inside the 80% range, last 12", latest["in_range_12m"] if isinstance(latest["in_range_12m"], str) else "n/a",
+            help="Should be about 10 of 12. 7 or fewer raises the range alert (D53)")
 d[2].metric("Promotion check", "Switch approved" if "approved" in str(latest["promotion_check"]) else
             ("A Challenger passes" if "passes" in str(latest["promotion_check"]) else "Champion stays"), help=str(latest["promotion_check"]))
 st.caption(f"Promotion check, latest month: {latest['promotion_check']}. Each Challenger is judged by the same rule (D32); "

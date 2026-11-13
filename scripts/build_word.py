@@ -82,7 +82,8 @@ def main(md_path: str) -> None:
         ref = Path(tmp) / "reference.docx"
         ref.write_bytes(subprocess.run(["pandoc", "--print-default-data-file", "reference.docx"], capture_output=True, check=True).stdout)
         rewrite(ref, style_template)
-        subprocess.run(["pandoc", str(md), "-f", "gfm", "-t", "docx", "--reference-doc", str(ref),
+        # gfm-tex_math_dollars: dollar amounts are money, not maths
+        subprocess.run(["pandoc", str(md), "-f", "gfm-tex_math_dollars", "-t", "docx", "--reference-doc", str(ref),
                         "--resource-path", str(md.parent), "-o", str(out)], check=True)  # images relative to the .md
     rewrite(out, format_tables)
     print(f"Written: {out}")

@@ -46,7 +46,7 @@ The clean data, backtest results and monitoring outputs are already in `data/`, 
 
 | Folder | Contents |
 |---|---|
-| `scripts/` | Downloading, reading the reports two ways, building tables and features, baselines and models, monitoring, MLflow, charts |
+| `scripts/` | Downloading, reading the reports two ways, building tables and features, baselines and models (including bottom-up), 80% forecast ranges, monitoring, MLflow, charts |
 | `data/clean/` | Clean monthly win (20 areas × 117 months), win by game type, capacity and hold |
 | `data/features/` | Forecasting features and the calendar |
 | `data/model/` | Backtest results for every model |

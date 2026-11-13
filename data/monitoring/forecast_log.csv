@@ -1,6 +1,6 @@
-made_with_data_to,forecast_month,market,role,model,version,forecast_m,note,last_retrained
-2026-09,2026-11,LV Strip,production,baseline same month last year,V1,784.3,,not applicable
-2026-09,2026-11,LV Strip,challenger,SARIMA + both,,776.6,,2026-09
-2026-09,2026-11,LV Strip,challenger,bottom-up baccarat luck out,,796.8,,not applicable
-2026-09,2026-11,Reno,production,SARIMA + game mix,V2,64.4,,2026-09
-2026-09,2026-11,Reno,challenger,baseline same month last year,,55.6,,not applicable
+made_with_data_to,forecast_month,market,role,model,version,forecast_m,note,last_retrained,range_low_m,range_high_m
+2026-09,2026-11,LV Strip,production,baseline same month last year,V1,784.3,,not applicable,723.7,892.8
+2026-09,2026-11,LV Strip,challenger,SARIMA + both,,776.6,,2026-09,703.6,874.8
+2026-09,2026-11,LV Strip,challenger,bottom-up baccarat luck out,,796.8,,not applicable,754.3,896.3
+2026-09,2026-11,Reno,production,SARIMA + game mix,V2,64.4,,2026-09,58.3,73.0
+2026-09,2026-11,Reno,challenger,baseline same month last year,,55.6,,not applicable,51.9,62.4

@@ -21,7 +21,7 @@
 | R3 | Seasonal behaviour affects performance | High | Medium | **Low** | Analyst |
 | R4 | Missing or bad monthly data | Medium | High | **Low** | Analyst |
 | R5 | Better on one period, worse overall | High | Medium | **Low** | Product Owner |
-| R6 | Business trusts forecasts without seeing the uncertainty | High | High | **High** | Delivery Lead |
+| R6 | Business trusts forecasts without seeing the uncertainty | High | High | **Low** (was High; D53) | Delivery Lead |
 | R7 | Model stays in production after it degrades | Medium | High | **Low** | Analyst |
 | R8 | Baccarat luck swings the Strip | High | High | **Medium** | Analyst |
 | R9 | Forecasts lean too low | High | Medium | **Medium** | Analyst |
@@ -31,7 +31,7 @@
 
 R1 to R7 are the brief's risks (17.2 to 17.8). R8 to R12 are extra risks we met in this project.
 
-**Biggest open risk: R6.** Forecasts are single numbers. The next step is to show a range with each forecast.
+**R6, the biggest risk at approval, is now reduced:** every forecast has an 80% range (D53). The open risks are the four rated Medium.
 
 ## Details
 
@@ -102,10 +102,13 @@ R1 to R7 are the brief's risks (17.2 to 17.8). R8 to R12 are extra risks we met 
     - a typical miss is 5.75%, about $43m;
     - 1 month in 10 misses by more than 12.4%.
   - Reno: the current model (Seasonal ARIMA + game mix) misses 7.2% on average, and more than 13.8% in 1 month in 10.
-- **Protection today:**
-  - The dashboard shows the past misses, the bad-month line and the 12-month MAPE, but not a range next to the forecast.
-- **Why High:** a finance reader sees $784.3m and may plan to it, when $740–830m is a normal outcome.
-- **Next:** add a range to every forecast, built from each model's own past misses, and show it on the dashboard and in the report.
+- **Protection (D53):**
+  - Every forecast now has an 80% range, built from the model's own past misses. Strip November 2026: $784.3m, **range $724m to $893m**.
+  - Shown in the monthly report, the forecast log and the dashboard (next to each forecast, and as a band on the chart).
+  - Monitoring counts how often the actual lands inside. 7 or fewer of the last 12 raises the range alert.
+  - Tested: Strip ranges held in 86% of the 43 test months, Reno's in 87% (target 80%).
+- **Why Low now:** the uncertainty sits next to every number. What's left is a reader ignoring it.
+- **Next:** none.
 
 ### R7. "The model may remain in production even after its performance has degraded." (17.8)
 - **Seen here:** not on the production models so far.
@@ -127,7 +130,7 @@ R1 to R7 are the brief's risks (17.2 to 17.8). R8 to R12 are extra risks we met 
   - The bottom-up Challenger takes last year's baccarat luck out of the forecast (D50, D51): 5.28% against 5.75% on the backtest.
   - It's held back by R9.
 - **Why still Medium:** no forecast can know the luck to come. The range (R6) should be wider on the Strip for this reason.
-- **Next:** the R6 range, and the R9 fix for bottom-up.
+- **Next:** the R9 fix for bottom-up. The Strip's range (D53) is already wide for this reason: about $170m.
 
 ### R9. Forecasts lean too low (extra)
 - **Seen here:** yes.
@@ -173,7 +176,7 @@ R1 to R7 are the brief's risks (17.2 to 17.8). R8 to R12 are extra risks we met 
 
 | Priority | Action | Risk |
 |---|---|---|
-| 1 | Show a range with every forecast | R6, R8 |
+| ~~1~~ | ~~Show a range with every forecast~~: **done (D53)** | R6, R8 |
 | 2 | Schedule the monthly monitoring run | R12, R7 |
 | 3 | Test a growth adjustment for bias | R9, R8 |
 | 4 | Yearly review: test capacity and hold as inputs | R2 |

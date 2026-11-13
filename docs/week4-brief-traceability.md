@@ -13,7 +13,7 @@ Status key: **Done** · **Partly** · **Not started**
 | Brief section | Status | In one line |
 |---|---|---|
 | Scenario, dataset, markets | Mostly done | Board data for four markets. Models built for the Strip and Reno only |
-| Business questions | Mostly done | All seven answered and monitored monthly. Still missing: a range around each forecast |
+| Business questions | Done | All seven answered and monitored monthly, each forecast with an 80% range (D53) |
 | Step 1: Prepare the data | Mostly done | 234 reports, four clean tables, 14 features. Gaps: source and derived not split in one table, no single preparation document |
 | Step 3: Baseline | Done | "Same month last year" and "last published". Gap: moving-average baseline |
 | Step 4: Models | Done | Seven models. LSTM left out by choice (D42) |
@@ -29,7 +29,7 @@ Status key: **Done** · **Partly** · **Not started**
 | Step 14: Retraining | Done | Monthly retraining runs in monitoring. Yearly and alert-triggered reviews |
 | Step 15: Dashboard | Done | Streamlit, on your computer, both markets (D47) |
 | Step 16: Product decisions | Done | All seven 'explain' points decided (D28, D31 to D34, D38 to D40) |
-| Step 17: Risks | Done (D52) | Risk register: the brief's 7 risks plus 5 of our own. Biggest open: forecasts have no range |
+| Step 17: Risks | Done (D52) | Risk register: the brief's 7 risks plus 5 of our own. The biggest, no range on forecasts, is now reduced (D53) |
 | Step 18: Deliverables | All 15 done | See the Step 18 table |
 
 ### Decisions (all ten made on 12 November 2026)
@@ -172,11 +172,11 @@ These are referred to throughout.
 ## Main business questions
 
 **0.8 "What revenue should we expect next month?"**
-- **Status:** Mostly done
+- **Status:** Done
 - **Specifics:** monitoring makes the forecast two months ahead each month, from each market's production model (D19, D45). With data to September 2026, the forecasts for November 2026 are:
-  - Strip: **$784.3m** (V1, "same month last year").
-  - Reno: **$64.4m** (V2, Seasonal ARIMA + game mix).
-- **Still to do:** show a range with each forecast. On the test, the Strip's typical miss was about 4% and a bad month over 12%. For Reno, about 7% and over 11%.
+  - Strip: **$784.3m** (V1, "same month last year"), 80% range **$724m to $893m**.
+  - Reno: **$64.4m** (V2, Seasonal ARIMA + game mix), 80% range **$58m to $73m**.
+- **The range (D53):** from the model's own past misses, dropping the worst 10% on each side. 8 months in 10 should land inside. On the test, Strip ranges held 86% of the time and Reno's 87%. The Strip's is wider because of baccarat luck.
 
 **0.9 "Which forecasting model performs best?"**
 - **Status:** Done for the Strip and Reno
@@ -955,13 +955,13 @@ These match the monitoring forecasts exactly, which was the check that the regis
 |---|---|---|---|
 | 15.1 | "Create a dashboard for model monitoring." | Done | One page, with a market picker |
 | 15.2 | Actual revenue | Done | "Actual against forecast" chart |
-| 15.3 | Forecast revenue | Done | Same chart, plus the next forecast from the production model and each Challenger (two on the Strip) |
+| 15.3 | Forecast revenue | Done | Same chart with the 80% range shaded, plus the next forecast and its range from the production model and each Challenger (two on the Strip) (D53) |
 | 15.4 | Forecast error | Done | Monthly miss bars, with bad months in red |
 | 15.5 | Historical revenue trends | Done | "Historical revenue, 2015 to now", with the 2020–21 gap shown |
 | 15.6 | The current production model | Done | "In production for the next forecast" |
 | 15.7 | The model version | Done | "Production version" (V1 or V2) |
 | 15.8 | The latest evaluation metrics | Done | 12-month MAPE, MAE, RMSE and bias |
-| 15.9 | Drift status | Done | Status this month, months flagged in the last 12, and the flagged-months table with each alert |
+| 15.9 | Drift status | Done | Status this month, months flagged in the last 12, months inside the 80% range, and the flagged-months table with each alert |
 | 15.10 | Last retraining date | Done | "Last retrained" ("n/a" for the rule) |
 | 15.11 | Healthy or requires investigation | Done | Coloured status badge next to the market name |
 
@@ -1036,7 +1036,7 @@ These match the monitoring forecasts exactly, which was the check that the regis
 | 17.4 | "Seasonal behaviour may affect performance." | Yes: December peak, February and August low | Production carries the season by design; Seasonal ARIMA | Low |
 | 17.5 | "Missing monthly data may produce incorrect forecasts." | Yes: January 2025 picture table, unreadable 2025 pages, four-week delay | Two months ahead (D19), bad-data rule and fallback (D38, D34), late alert | Low |
 | 17.6 | "A new model may perform better on one period but worse overall." | Yes: Reno's Challenger met a simple rule in Oct 2024, then did worse in 2025 | Promotion rule with margin, full-test check and 3 in a row (D32), way back (D33) | Low |
-| 17.7 | "The business may trust forecasts without reviewing uncertainty." | Yes: forecasts are single numbers | Past misses on the dashboard only. **Next: a range with every forecast** | **High** |
+| 17.7 | "The business may trust forecasts without reviewing uncertainty." | Yes: forecasts were single numbers | An 80% range with every forecast, and an alert if too few actuals land inside (D53) | Low (was High) |
 | 17.8 | "The model may remain in production even after its performance has degraded." | Not on production so far | Monthly monitoring, alerts, way back, emergency fallback (D33, D34, D37, D45) | Low |
 
 ---
