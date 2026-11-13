@@ -1,0 +1,235 @@
+kind,month,file,format_group,bars_between_columns,current_period_header,fee_page,fiscal_ytd_header,pages,section_headings,slot_heading,three_month_block,total_label,upper_case_titles,win_in_thousands
+ARR,2015-01,arrjan15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-02,arrfeb15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-03,arrmar15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-04,arrapr15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-05,arrmay15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-06,arrjun15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-07,arrjul15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-08,arraug15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-09,arrsep15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-10,arroct15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-11,arrnov15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2015-12,arrdec15.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-01,arrjan16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-02,arrfeb16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-03,arrmar16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-04,arrapr16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-05,arrmay16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-06,arrjun16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-07,arrjul16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-08,arraug16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-09,arrsep16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-10,arroct16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-11,arrnov16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2016-12,arrdec16.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-01,arrjan17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-02,arrfeb17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-03,arrmar17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-04,arrapr17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-05,arrmay17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-06,arrjun17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-07,arrjul17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-08,arraug17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-09,arrsep17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-10,arroct17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-11,arrnov17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2017-12,arrdec17.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-01,arrjan18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-02,arrfeb18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-03,arrmar18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-04,arrapr18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-05,arrmay18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-06,arrjun18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-07,arrjul18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-08,arraug18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-09,arrsep18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-10,arroct18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-11,arrnov18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2018-12,arrdec18.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-01,arrjan19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-02,arrfeb19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-03,arrmar19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-04,arrapr19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-05,arrmay19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-06,arrjun19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-07,arrjul19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-08,arraug19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-09,arrsep19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-10,arroct19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-11,arrnov19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2019-12,arrdec19.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-01,2022Jan-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-02,2022Feb-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-03,2022Mar-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-04,2022Apr-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-05,2022May-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-06,2022Jun-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-07,2022Jul-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-08,2022Aug-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-09,2022Sep-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-10,2022Oct-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-11,2022Nov-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2022-12,2022Dec-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-01,2023Jan-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-02,2023Feb-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-03,2023Mar-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-04,2023Apr-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-05,2023May-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-06,2023Jun-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-07,2023Jul-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-08,2023Aug-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-09,2023Sep-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-10,2023Oct-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-11,2023Nov-aarrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2023-12,2023Dec-arrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-01,2024Jan-arrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-02,2024Feb-arrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-03,2024Mar-arrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-04,2024Apr-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-05,2024May-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-06,2024Jun-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-07,2024Jul-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-08,2024Aug-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-09,2024Sep-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-10,2024Oct-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-11,2024Nov-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2024-12,2024Dec-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-01,2025Jan-arrevenue.pdf,5,,False,True,False,2,,,,,False,
+ARR,2025-02,2025Feb-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-03,2025Mar-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-04,2025Apr-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-05,2025May-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-06,2025jun-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-07,2025jul-arrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-08,mrraug2025.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-09,mrrsept2025.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-10,mrroct2025.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-11,mrrnov2025.pdf,6,,True,True,True,2,,,,,False,
+ARR,2025-12,mrrdec2025.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-01,2026jan-abrrevenue.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-02,mrrfeb2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-03,mrrmar2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-04,mrrapr2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-05,mrrmay2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-06,mrrjun2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-07,mrrjul2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-08,mrraug2026.pdf,6,,True,True,True,2,,,,,False,
+ARR,2026-09,mrrsept2026.pdf,6,,True,True,True,2,,,,,False,
+GRI,2015-01,2015Jan-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-02,2015Feb-gri.pdf,3,True,,,,47,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-03,2015Mar-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-04,2015Apr-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-05,2015May-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-06,2015Jun-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-07,2015Jul-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-08,2015Aug-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-09,2015Sep-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-10,2015Oct-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-11,2015Nov-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2015-12,2015Dec-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-01,2016Jan-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-02,2016Feb-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-03,2016Mar-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-04,2016Apr-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-05,2016May-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-06,2016Jun-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-07,2016Jul-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-08,2016Aug-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-09,2016Sep-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-10,2016Oct-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-11,2016Nov-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2016-12,2016Dec-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-01,2017Jan-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-02,2017Feb-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-03,2017Mar-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-04,2017Apr-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-05,2017May-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-06,2017Jun-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-07,2017Jul-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-08,2017Aug-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-09,2017Sep-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2017-10,2017Oct-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-11,2017Nov-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2017-12,2017Dec-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2018-01,2018Jan-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2018-02,2018Feb-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2018-03,2018Mar-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2018-04,2018Apr-gri.pdf,4,True,,,,48,False,True,True,TOTAL GAMING WIN,True,True
+GRI,2018-05,2018May-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-06,2018Jun-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-07,2018Jul-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-08,2018Aug-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-09,2018Sep-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-10,2018Oct-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-11,2018Nov-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2018-12,2018Dec-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-01,2019Jan-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-02,2019Feb-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-03,2019Mar-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-04,2019Apr-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-05,2019May-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-06,2019Jun-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-07,2019Jul-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-08,2019Aug-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-09,2019Sep-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-10,2019Oct-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-11,2019Nov-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2019-12,2019Dec-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-01,2022Jan-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-02,2022Feb-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-03,2022Mar-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-04,2022Apr-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-05,2022May-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-06,2022Jun-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-07,2022Jul-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-08,2022Aug-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-09,2022Sep-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-10,2022Oct-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-11,2022Nov-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2022-12,2022Dec-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-01,2023Jan-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-02,2023Feb-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-03,2023Mar-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-04,2023Apr-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-05,2023May-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-06,2023Jun-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-07,2023Jul-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-08,2023Aug-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-09,2023Sep-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-10,2023Oct-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-11,2023Nov-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2023-12,2023Dec-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-01,2024Jan-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-02,2024Feb-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-03,2024Mar-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-04,2024Apr-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-05,2024May-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-06,2024Jun-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-07,2024Jul-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-08,2024Aug-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-09,2024Sep-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-10,2024Oct-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-11,2024Nov-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2024-12,2024Dec-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-01,2025Jan-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-02,2025Feb-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-03,2025Mar-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-04,2025Apr-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-05,2025May-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-06,2025jun-gri.pdf,1,False,,,,48,False,False,False,Total Gaming,False,False
+GRI,2025-07,2025jul-gri.pdf,1,False,,,,48,False,False,False,Total Gaming,False,False
+GRI,2025-08,august-2025-monthly-revenue-report.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-09,september-2025-monthly-revenue-report.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-10,2025oct-gri.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-11,november-2025-monthly-revenue-report.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2025-12,december-2025-monthly-revenue-report.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-01,monthly-revenue-report---january-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-02,monthly-revenue-report----february-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-03,monthly-revenue-report----march-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-04,monthly-revenue-report---april-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-05,monthly-revenue-report----may-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-06,monthly-revenue-report----june-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-07,monthly-revenue-report---july-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-08,monthly-revenue-report---august-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True
+GRI,2026-09,monthly-revenue-report----september-2026.pdf,2,False,,,,48,True,True,True,Total Gaming,False,True

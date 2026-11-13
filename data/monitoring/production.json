@@ -1,0 +1,29 @@
+{
+  "_about": "Which model is in production for each market, and which runs alongside as the Challenger. Changed only with the Product Owner's approval (D34). The full registry moves to MLflow in Step 9.",
+  "LV Strip": [
+    {
+      "version": "V1",
+      "model": "baseline same month last year",
+      "challenger": "SARIMA + both",
+      "from_forecast_month": "2023-03",
+      "decision": "D28, D41"
+    }
+  ],
+  "Reno": [
+    {
+      "version": "V1",
+      "model": "baseline same month last year",
+      "challenger": "SARIMA + game mix",
+      "from_forecast_month": "2023-03",
+      "decision": "D28, D41"
+    },
+    {
+      "version": "V2",
+      "model": "SARIMA + game mix",
+      "challenger": "baseline same month last year",
+      "from_forecast_month": "2026-11",
+      "decision": "D36 (approved once monitoring runs), D33 (old model becomes Challenger)",
+      "approved_trigger_from": "2026-08"
+    }
+  ]
+}

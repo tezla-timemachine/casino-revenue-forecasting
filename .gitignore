@@ -1,0 +1,15 @@
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+
+# Downloaded Board reports: re-fetched by scripts/fetch_arr.py and scripts/fetch_board_reports.py (manifests are kept)
+data/raw/**/*.pdf
+
+# MLflow store: rebuilt by scripts/mlflow_log.py (holds local file paths)
+mlflow/
+
+# Local tool settings and macOS files
+.claude/
+.DS_Store
+~$*.docx
