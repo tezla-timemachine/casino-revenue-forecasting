@@ -1,87 +1,87 @@
 data_to,market,model,version,challenger,data_check,actual_m,forecast_m,miss_pct,mape_12m,mae_12m_m,rmse_12m_m,bias_12m_m,alerts,status,promotion_check
-2023-03,LV Strip,baseline same month last year,V1,SARIMA + both,pass,724.6,746.2,-3.0%,,,,,,Healthy,
+2023-03,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,724.6,746.2,-3.0%,,,,,,Healthy,
 2023-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,55.3,59.8,-8.0%,,,,,,Healthy,
-2023-04,LV Strip,baseline same month last year,V1,SARIMA + both,pass,624.7,593.5,+5.0%,,,,,,Healthy,
+2023-04,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,624.7,593.5,+5.0%,,,,,,Healthy,
 2023-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,63.0,62.2,+1.3%,,,,,,Healthy,
-2023-05,LV Strip,baseline same month last year,V1,SARIMA + both,pass,716.0,731.5,-2.2%,3.39%,22.8,23.7,-2.0,,Healthy,
+2023-05,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,716.0,731.5,-2.2%,3.39%,22.8,23.7,-2.0,,Healthy,
 2023-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,66.2,62.9,+4.9%,4.72%,2.8,3.2,-0.1,,Healthy,
-2023-06,LV Strip,baseline same month last year,V1,SARIMA + both,pass,727.3,734.8,-1.0%,2.80%,19.0,20.9,-3.3,,Healthy,
+2023-06,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,727.3,734.8,-1.0%,2.80%,19.0,20.9,-3.3,,Healthy,
 2023-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,69.1,61.4,+11.1%,6.32%,4.0,4.7,1.8,,Healthy,
-2023-07,LV Strip,baseline same month last year,V1,SARIMA + both,pass,834.9,773.4,+7.4%,3.71%,27.5,33.2,9.6,,Healthy,
+2023-07,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,834.9,773.4,+7.4%,3.71%,27.5,33.2,9.6,,Healthy,
 2023-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,72.2,69.2,+4.2%,5.89%,3.8,4.4,2.1,,Healthy,
-2023-08,LV Strip,baseline same month last year,V1,SARIMA + both,pass,666.8,659.7,+1.1%,3.27%,24.1,30.5,9.2,,Healthy,
+2023-08,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,666.8,659.7,+1.1%,3.27%,24.1,30.5,9.2,,Healthy,
 2023-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.7,67.3,+2.2%,5.26%,3.4,4.1,2.0,,Healthy,
-2023-09,LV Strip,baseline same month last year,V1,SARIMA + both,pass,741.2,693.0,+6.5%,3.73%,27.5,33.6,14.8,,Healthy,
+2023-09,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,741.2,693.0,+6.5%,3.73%,27.5,33.6,14.8,,Healthy,
 2023-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.0,68.2,-6.7%,5.46%,3.6,4.1,1.1,,Healthy,
-2023-10,LV Strip,baseline same month last year,V1,SARIMA + both,pass,714.5,705.8,+1.2%,3.42%,25.2,31.6,14.0,,Healthy,
+2023-10,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,714.5,705.8,+1.2%,3.42%,25.2,31.6,14.0,,Healthy,
 2023-10,Reno,baseline same month last year,V1,SARIMA + game mix,pass,70.3,64.5,+8.3%,5.82%,3.8,4.4,1.7,,Healthy,
-2023-11,LV Strip,baseline same month last year,V1,SARIMA + both,pass,821.0,669.5,+18.5%,5.09%,39.2,58.6,29.3,,Healthy,
+2023-11,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,821.0,669.5,+18.5%,5.09%,39.2,58.6,29.3,,Healthy,
 2023-11,Reno,baseline same month last year,V1,SARIMA + game mix,pass,58.0,56.0,+3.4%,5.55%,3.6,4.2,1.7,,Healthy,
-2023-12,LV Strip,baseline same month last year,V1,SARIMA + both,pass,905.4,814.2,+10.1%,5.59%,44.4,62.7,35.5,capacity: slots +5.5% on a year earlier,Investigate,
+2023-12,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,905.4,814.2,+10.1%,5.59%,44.4,62.7,35.5,capacity: slots +5.5% on a year earlier,Investigate,
 2023-12,Reno,baseline same month last year,V1,SARIMA + game mix,pass,54.9,59.1,-7.8%,5.78%,3.7,4.2,1.1,,Healthy,
-2024-01,LV Strip,baseline same month last year,V1,SARIMA + both,pass,686.2,713.2,-3.9%,5.44%,42.8,60.3,29.8,capacity: slots +5.3% on a year earlier,Investigate,
+2024-01,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,686.2,713.2,-3.9%,5.44%,42.8,60.3,29.8,capacity: slots +5.3% on a year earlier,Investigate,
 2024-01,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.4,42.2,+35.5%,8.48%,5.5,8.1,3.1,,Healthy,
-2024-02,LV Strip,baseline same month last year,V1,SARIMA + both,pass,800.7,712.5,+11.0%,5.90%,46.6,63.1,34.7,,Healthy,Challenger doesn't pass
-2024-02,Reno,baseline same month last year,V1,SARIMA + game mix,pass,60.0,54.5,+9.2%,8.53%,5.5,7.9,3.3,,Healthy,Challenger doesn't pass
-2024-03,LV Strip,baseline same month last year,V1,SARIMA + both,pass,715.9,724.6,-1.2%,5.75%,45.5,62.8,35.7,,Healthy,Challenger doesn't pass
-2024-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,52.0,55.3,-6.4%,8.40%,5.4,7.8,3.4,,Healthy,Challenger doesn't pass
-2024-04,LV Strip,baseline same month last year,V1,SARIMA + both,pass,666.1,624.7,+6.2%,5.86%,46.4,63.3,36.6,,Healthy,Challenger doesn't pass
-2024-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,59.3,63.0,-6.3%,8.82%,5.6,7.9,3.0,slow: 12-month MAPE over 8.7%,Investigate,Challenger doesn't pass
-2024-05,LV Strip,baseline same month last year,V1,SARIMA + both,pass,742.5,716.0,+3.6%,5.97%,47.3,63.6,40.1,,Healthy,Challenger doesn't pass
-2024-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.2,66.2,-1.4%,8.53%,5.4,7.9,2.7,,Healthy,Challenger doesn't pass
-2024-06,LV Strip,baseline same month last year,V1,SARIMA + both,pass,758.6,727.3,+4.1%,6.23%,49.3,64.2,43.3,,Healthy,Challenger doesn't pass
-2024-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.2,69.1,-7.6%,8.24%,5.2,7.7,1.6,,Healthy,Challenger doesn't pass
-2024-07,LV Strip,baseline same month last year,V1,SARIMA + both,pass,709.3,834.9,-17.7%,7.09%,54.6,71.6,27.7,,Healthy,Challenger doesn't pass
-2024-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,69.3,72.2,-4.3%,8.26%,5.2,7.7,1.1,,Healthy,Challenger doesn't pass
-2024-08,LV Strip,baseline same month last year,V1,SARIMA + both,pass,643.7,666.8,-3.6%,7.30%,56.0,71.9,25.2,slow: 12-month MAPE over 7.3%,Investigate,Challenger doesn't pass
-2024-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.4,68.7,-5.1%,8.50%,5.4,7.7,0.7,,Healthy,Challenger passes (1 in a row)
-2024-09,LV Strip,baseline same month last year,V1,SARIMA + both,pass,727.7,741.2,-1.9%,6.91%,53.1,70.6,20.1,,Healthy,Challenger doesn't pass
-2024-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,71.9,64.0,+11.0%,8.86%,5.7,7.9,1.7,slow: 12-month MAPE over 8.7%,Investigate,Challenger passes (2 in a row)
-2024-10,LV Strip,baseline same month last year,V1,SARIMA + both,pass,692.1,714.5,-3.2%,7.08%,54.2,70.9,17.5,,Healthy,Challenger doesn't pass
-2024-10,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.2,70.3,-3.2%,8.43%,5.4,7.8,1.1,,Healthy,"Challenger passes (3 in a row): switch recommended, needs Product Owner approval (D34)"
-2024-11,LV Strip,baseline same month last year,V1,SARIMA + both,pass,788.7,821.0,-4.1%,5.89%,44.3,56.5,2.2,,Healthy,Challenger doesn't pass
-2024-11,Reno,baseline same month last year,V1,SARIMA + game mix,pass,51.9,58.0,-11.7%,9.12%,5.7,8.0,0.4,slow: 12-month MAPE over 8.7%,Investigate,Challenger doesn't pass
-2024-12,LV Strip,baseline same month last year,V1,SARIMA + both,pass,881.3,905.4,-2.7%,5.28%,38.7,50.5,-7.5,,Healthy,Challenger doesn't pass
-2024-12,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.8,54.9,+16.6%,9.86%,6.2,8.5,1.7,fast: 2 of last 3 months over 11.1%; slow: 12-month MAPE over 8.7%,Investigate,Challenger passes (1 in a row)
-2025-01,LV Strip,baseline same month last year,V1,SARIMA + both,pass,840.1,686.2,+18.3%,6.47%,49.3,66.8,7.6,,Healthy,Challenger doesn't pass
-2025-01,Reno,baseline same month last year,V1,SARIMA + game mix,pass,67.1,65.4,+2.5%,7.11%,4.5,5.2,-0.1,fast: 2 of last 3 months over 11.1%,Investigate,Challenger doesn't pass
-2025-02,LV Strip,baseline same month last year,V1,SARIMA + both,pass,690.3,800.7,-16.0%,6.89%,51.1,69.5,-8.9,fast: 2 of last 3 months over 12.4%; capacity: tables -5.6% on a year earlier,Investigate,Challenger doesn't pass
-2025-02,Reno,baseline same month last year,V1,SARIMA + game mix,pass,56.2,60.0,-6.8%,6.91%,4.3,5.1,-0.9,,Healthy,Challenger doesn't pass
-2025-03,LV Strip,baseline same month last year,V1,SARIMA + both,pass,681.7,715.9,-5.0%,7.20%,53.2,70.1,-11.1,fast: 2 of last 3 months over 12.4%,Investigate,Challenger doesn't pass
-2025-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,57.7,52.0,+9.8%,7.19%,4.5,5.3,-0.1,,Healthy,Challenger doesn't pass
-2025-04,LV Strip,baseline same month last year,V1,SARIMA + both,pass,646.9,666.1,-3.0%,6.93%,51.4,69.3,-16.1,,Healthy,Challenger doesn't pass
-2025-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.7,59.3,+8.4%,7.37%,4.7,5.4,0.6,,Healthy,Challenger doesn't pass
-2025-05,LV Strip,baseline same month last year,V1,SARIMA + both,pass,713.8,742.5,-4.0%,6.97%,51.6,69.4,-20.7,,Healthy,Challenger doesn't pass
-2025-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,63.5,65.2,-2.8%,7.48%,4.7,5.4,0.6,capacity: slots -12.6% on a year earlier,Investigate,Challenger doesn't pass
-2025-06,LV Strip,baseline same month last year,V1,SARIMA + both,pass,765.3,758.6,+0.9%,6.70%,49.5,68.9,-22.7,,Healthy,Challenger doesn't pass
-2025-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,67.8,64.2,+5.4%,7.29%,4.6,5.3,1.3,,Healthy,Challenger doesn't pass
-2025-07,LV Strip,baseline same month last year,V1,SARIMA + both,pass,749.1,709.3,+5.3%,5.67%,42.4,59.7,-9.0,,Healthy,Challenger doesn't pass
-2025-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,76.1,69.3,+9.0%,7.69%,4.9,5.6,2.1,,Healthy,Challenger doesn't pass
-2025-08,LV Strip,baseline same month last year,V1,SARIMA + both,pass,679.4,643.7,+5.3%,5.81%,43.4,60.2,-4.1,,Healthy,Challenger doesn't pass
-2025-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.7,65.4,+4.7%,7.65%,4.9,5.6,2.6,,Healthy,Challenger doesn't pass
-2025-09,LV Strip,baseline same month last year,V1,SARIMA + both,pass,687.8,727.7,-5.8%,6.13%,45.6,61.1,-6.3,,Healthy,Challenger doesn't pass
-2025-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,75.7,71.9,+5.0%,7.15%,4.6,5.2,2.3,,Healthy,Challenger doesn't pass
-2025-10,LV Strip,baseline same month last year,V1,SARIMA + both,pass,748.9,692.1,+7.6%,6.50%,48.5,63.0,0.3,,Healthy,Challenger doesn't pass
-2025-10,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.4,68.2,+0.3%,6.91%,4.4,5.2,2.5,,Healthy,Challenger doesn't pass
-2025-11,LV Strip,baseline same month last year,V1,SARIMA + both,pass,784.3,788.7,-0.6%,6.20%,46.1,62.3,2.7,,Healthy,Challenger doesn't pass
-2025-11,Reno,baseline same month last year,V1,SARIMA + game mix,pass,55.6,51.9,+6.6%,6.49%,4.2,5.0,3.3,,Healthy,Challenger doesn't pass
-2025-12,LV Strip,baseline same month last year,V1,SARIMA + both,pass,827.7,881.3,-6.5%,6.51%,48.6,63.8,0.2,,Healthy,Challenger doesn't pass
-2025-12,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.8,65.8,-1.6%,5.25%,3.4,3.9,2.3,,Healthy,Challenger doesn't pass
-2026-01,LV Strip,baseline same month last year,V1,SARIMA + both,pass,747.7,840.1,-12.4%,6.02%,43.5,53.0,-20.3,,Healthy,Challenger doesn't pass
-2026-01,Reno,baseline same month last year,V1,SARIMA + game mix,pass,69.0,67.1,+2.8%,5.27%,3.4,3.9,2.3,,Healthy,Challenger doesn't pass
-2026-02,LV Strip,baseline same month last year,V1,SARIMA + both,pass,696.3,690.3,+0.9%,4.76%,34.8,42.4,-10.6,,Healthy,Challenger doesn't pass
-2026-02,Reno,baseline same month last year,V1,SARIMA + game mix,pass,60.6,56.2,+7.2%,5.30%,3.5,4.0,3.0,,Healthy,Challenger doesn't pass
-2026-03,LV Strip,baseline same month last year,V1,SARIMA + both,pass,780.0,681.7,+12.6%,5.39%,40.1,50.0,0.4,,Healthy,Challenger doesn't pass
-2026-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,62.0,57.7,+7.0%,5.07%,3.4,3.8,2.9,,Healthy,Challenger doesn't pass
-2026-04,LV Strip,baseline same month last year,V1,SARIMA + both,pass,689.4,646.9,+6.2%,5.66%,42.1,51.2,5.6,,Healthy,Challenger doesn't pass
-2026-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,72.3,64.7,+10.6%,5.25%,3.5,4.1,3.1,,Healthy,Challenger doesn't pass
-2026-05,LV Strip,baseline same month last year,V1,SARIMA + both,pass,807.9,713.8,+11.7%,6.29%,47.5,57.4,15.8,,Healthy,Challenger doesn't pass
-2026-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,70.5,63.5,+10.0%,5.85%,4.0,4.6,3.8,capacity: slots +12.4% on a year earlier,Investigate,Challenger doesn't pass
-2026-06,LV Strip,baseline same month last year,V1,SARIMA + both,pass,754.7,765.3,-1.4%,6.34%,47.8,57.4,14.4,,Healthy,Challenger doesn't pass
-2026-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,81.6,67.8,+16.9%,6.80%,4.8,6.0,4.6,,Healthy,Challenger passes (1 in a row)
-2026-07,LV Strip,baseline same month last year,V1,SARIMA + both,pass,776.3,749.1,+3.5%,6.19%,46.8,56.8,13.3,,Healthy,Challenger passes (1 in a row)
-2026-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,76.9,76.1,+1.0%,6.13%,4.3,5.6,4.1,,Healthy,Challenger passes (2 in a row)
-2026-08,LV Strip,baseline same month last year,V1,SARIMA + both,pass,684.1,679.4,+0.7%,5.81%,44.2,55.9,10.7,,Healthy,Challenger doesn't pass
-2026-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,79.4,68.7,+13.6%,6.87%,4.9,6.4,4.8,fast: 2 of last 3 months over 11.1%,Investigate,"Challenger passes (3 in a row): switch approved, V2 from the 2026-11 forecast (D36)"
-2026-09,LV Strip,baseline same month last year,V1,SARIMA + both,pass,693.5,687.8,+0.8%,5.39%,41.4,54.7,14.5,,Healthy,Challenger doesn't pass
-2026-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,73.0,75.7,-3.7%,6.76%,4.9,6.3,4.2,,Healthy,"Challenger passes (4 in a row): switch approved, V2 from the 2026-11 forecast (D36)"
+2024-02,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,800.7,712.5,+11.0%,5.90%,46.6,63.1,34.7,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-02,Reno,baseline same month last year,V1,SARIMA + game mix,pass,60.0,54.5,+9.2%,8.53%,5.5,7.9,3.3,,Healthy,SARIMA + game mix: doesn't pass
+2024-03,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,715.9,724.6,-1.2%,5.75%,45.5,62.8,35.7,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,52.0,55.3,-6.4%,8.40%,5.4,7.8,3.4,,Healthy,SARIMA + game mix: doesn't pass
+2024-04,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,666.1,624.7,+6.2%,5.86%,46.4,63.3,36.6,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,59.3,63.0,-6.3%,8.82%,5.6,7.9,3.0,slow: 12-month MAPE over 8.7%,Investigate,SARIMA + game mix: doesn't pass
+2024-05,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,742.5,716.0,+3.6%,5.97%,47.3,63.6,40.1,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.2,66.2,-1.4%,8.53%,5.4,7.9,2.7,,Healthy,SARIMA + game mix: doesn't pass
+2024-06,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,758.6,727.3,+4.1%,6.23%,49.3,64.2,43.3,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.2,69.1,-7.6%,8.24%,5.2,7.7,1.6,,Healthy,SARIMA + game mix: doesn't pass
+2024-07,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,709.3,834.9,-17.7%,7.09%,54.6,71.6,27.7,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,69.3,72.2,-4.3%,8.26%,5.2,7.7,1.1,,Healthy,SARIMA + game mix: doesn't pass
+2024-08,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,643.7,666.8,-3.6%,7.30%,56.0,71.9,25.2,slow: 12-month MAPE over 7.3%,Investigate,SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (1 in a row)
+2024-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.4,68.7,-5.1%,8.50%,5.4,7.7,0.7,,Healthy,SARIMA + game mix: passes (1 in a row)
+2024-09,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,727.7,741.2,-1.9%,6.91%,53.1,70.6,20.1,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,71.9,64.0,+11.0%,8.86%,5.7,7.9,1.7,slow: 12-month MAPE over 8.7%,Investigate,SARIMA + game mix: passes (2 in a row)
+2024-10,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,692.1,714.5,-3.2%,7.08%,54.2,70.9,17.5,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-10,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.2,70.3,-3.2%,8.43%,5.4,7.8,1.1,,Healthy,"SARIMA + game mix: passes (3 in a row). Switch recommended to SARIMA + game mix, needs Product Owner approval (D34)"
+2024-11,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,788.7,821.0,-4.1%,5.89%,44.3,56.5,2.2,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-11,Reno,baseline same month last year,V1,SARIMA + game mix,pass,51.9,58.0,-11.7%,9.12%,5.7,8.0,0.4,slow: 12-month MAPE over 8.7%,Investigate,SARIMA + game mix: doesn't pass
+2024-12,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,881.3,905.4,-2.7%,5.28%,38.7,50.5,-7.5,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2024-12,Reno,baseline same month last year,V1,SARIMA + game mix,pass,65.8,54.9,+16.6%,9.86%,6.2,8.5,1.7,fast: 2 of last 3 months over 11.1%; slow: 12-month MAPE over 8.7%,Investigate,SARIMA + game mix: passes (1 in a row)
+2025-01,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,840.1,686.2,+18.3%,6.47%,49.3,66.8,7.6,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-01,Reno,baseline same month last year,V1,SARIMA + game mix,pass,67.1,65.4,+2.5%,7.11%,4.5,5.2,-0.1,fast: 2 of last 3 months over 11.1%,Investigate,SARIMA + game mix: doesn't pass
+2025-02,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,690.3,800.7,-16.0%,6.89%,51.1,69.5,-8.9,fast: 2 of last 3 months over 12.4%; capacity: tables -5.6% on a year earlier,Investigate,SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (1 in a row)
+2025-02,Reno,baseline same month last year,V1,SARIMA + game mix,pass,56.2,60.0,-6.8%,6.91%,4.3,5.1,-0.9,,Healthy,SARIMA + game mix: doesn't pass
+2025-03,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,681.7,715.9,-5.0%,7.20%,53.2,70.1,-11.1,fast: 2 of last 3 months over 12.4%,Investigate,SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (2 in a row)
+2025-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,57.7,52.0,+9.8%,7.19%,4.5,5.3,-0.1,,Healthy,SARIMA + game mix: doesn't pass
+2025-04,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,646.9,666.1,-3.0%,6.93%,51.4,69.3,-16.1,,Healthy,"SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (3 in a row). Switch recommended to bottom-up baccarat luck out, needs Product Owner approval (D34)"
+2025-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.7,59.3,+8.4%,7.37%,4.7,5.4,0.6,,Healthy,SARIMA + game mix: doesn't pass
+2025-05,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,713.8,742.5,-4.0%,6.97%,51.6,69.4,-20.7,,Healthy,"SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (4 in a row). Switch recommended to bottom-up baccarat luck out, needs Product Owner approval (D34)"
+2025-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,63.5,65.2,-2.8%,7.48%,4.7,5.4,0.6,capacity: slots -12.6% on a year earlier,Investigate,SARIMA + game mix: doesn't pass
+2025-06,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,765.3,758.6,+0.9%,6.70%,49.5,68.9,-22.7,,Healthy,"SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (5 in a row). Switch recommended to bottom-up baccarat luck out, needs Product Owner approval (D34)"
+2025-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,67.8,64.2,+5.4%,7.29%,4.6,5.3,1.3,,Healthy,SARIMA + game mix: doesn't pass
+2025-07,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,749.1,709.3,+5.3%,5.67%,42.4,59.7,-9.0,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,76.1,69.3,+9.0%,7.69%,4.9,5.6,2.1,,Healthy,SARIMA + game mix: doesn't pass
+2025-08,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,679.4,643.7,+5.3%,5.81%,43.4,60.2,-4.1,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.7,65.4,+4.7%,7.65%,4.9,5.6,2.6,,Healthy,SARIMA + game mix: doesn't pass
+2025-09,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,687.8,727.7,-5.8%,6.13%,45.6,61.1,-6.3,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,75.7,71.9,+5.0%,7.15%,4.6,5.2,2.3,,Healthy,SARIMA + game mix: doesn't pass
+2025-10,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,748.9,692.1,+7.6%,6.50%,48.5,63.0,0.3,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-10,Reno,baseline same month last year,V1,SARIMA + game mix,pass,68.4,68.2,+0.3%,6.91%,4.4,5.2,2.5,,Healthy,SARIMA + game mix: doesn't pass
+2025-11,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,784.3,788.7,-0.6%,6.20%,46.1,62.3,2.7,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-11,Reno,baseline same month last year,V1,SARIMA + game mix,pass,55.6,51.9,+6.6%,6.49%,4.2,5.0,3.3,,Healthy,SARIMA + game mix: doesn't pass
+2025-12,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,827.7,881.3,-6.5%,6.51%,48.6,63.8,0.2,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2025-12,Reno,baseline same month last year,V1,SARIMA + game mix,pass,64.8,65.8,-1.6%,5.25%,3.4,3.9,2.3,,Healthy,SARIMA + game mix: doesn't pass
+2026-01,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,747.7,840.1,-12.4%,6.02%,43.5,53.0,-20.3,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (1 in a row)
+2026-01,Reno,baseline same month last year,V1,SARIMA + game mix,pass,69.0,67.1,+2.8%,5.27%,3.4,3.9,2.3,,Healthy,SARIMA + game mix: doesn't pass
+2026-02,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,696.3,690.3,+0.9%,4.76%,34.8,42.4,-10.6,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2026-02,Reno,baseline same month last year,V1,SARIMA + game mix,pass,60.6,56.2,+7.2%,5.30%,3.5,4.0,3.0,,Healthy,SARIMA + game mix: doesn't pass
+2026-03,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,780.0,681.7,+12.6%,5.39%,40.1,50.0,0.4,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2026-03,Reno,baseline same month last year,V1,SARIMA + game mix,pass,62.0,57.7,+7.0%,5.07%,3.4,3.8,2.9,,Healthy,SARIMA + game mix: doesn't pass
+2026-04,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,689.4,646.9,+6.2%,5.66%,42.1,51.2,5.6,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (1 in a row)
+2026-04,Reno,baseline same month last year,V1,SARIMA + game mix,pass,72.3,64.7,+10.6%,5.25%,3.5,4.1,3.1,,Healthy,SARIMA + game mix: doesn't pass
+2026-05,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,807.9,713.8,+11.7%,6.29%,47.5,57.4,15.8,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (2 in a row)
+2026-05,Reno,baseline same month last year,V1,SARIMA + game mix,pass,70.5,63.5,+10.0%,5.85%,4.0,4.6,3.8,capacity: slots +12.4% on a year earlier,Investigate,SARIMA + game mix: doesn't pass
+2026-06,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,754.7,765.3,-1.4%,6.34%,47.8,57.4,14.4,,Healthy,"SARIMA + both: doesn't pass; bottom-up baccarat luck out: passes (3 in a row). Switch recommended to bottom-up baccarat luck out, needs Product Owner approval (D34)"
+2026-06,Reno,baseline same month last year,V1,SARIMA + game mix,pass,81.6,67.8,+16.9%,6.80%,4.8,6.0,4.6,,Healthy,SARIMA + game mix: passes (1 in a row)
+2026-07,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,776.3,749.1,+3.5%,6.19%,46.8,56.8,13.3,,Healthy,SARIMA + both: passes (1 in a row); bottom-up baccarat luck out: doesn't pass
+2026-07,Reno,baseline same month last year,V1,SARIMA + game mix,pass,76.9,76.1,+1.0%,6.13%,4.3,5.6,4.1,,Healthy,SARIMA + game mix: passes (2 in a row)
+2026-08,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,684.1,679.4,+0.7%,5.81%,44.2,55.9,10.7,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2026-08,Reno,baseline same month last year,V1,SARIMA + game mix,pass,79.4,68.7,+13.6%,6.87%,4.9,6.4,4.8,fast: 2 of last 3 months over 11.1%,Investigate,SARIMA + game mix: passes (3 in a row). Switch approved to SARIMA + game mix: V2 from the 2026-11 forecast (D36)
+2026-09,LV Strip,baseline same month last year,V1,SARIMA + both / bottom-up baccarat luck out,pass,693.5,687.8,+0.8%,5.39%,41.4,54.7,14.5,,Healthy,SARIMA + both: doesn't pass; bottom-up baccarat luck out: doesn't pass
+2026-09,Reno,baseline same month last year,V1,SARIMA + game mix,pass,73.0,75.7,-3.7%,6.76%,4.9,6.3,4.2,,Healthy,SARIMA + game mix: passes (4 in a row). Switch approved to SARIMA + game mix: V2 from the 2026-11 forecast (D36)

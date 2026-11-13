@@ -5,7 +5,8 @@ Each run happens when the Board publishes a new month. For each market it:
   2. scores the forecasts made two months earlier against the actual figure
   3. tracks 12-month MAPE, MAE, RMSE and bias for the production model (D31)
   4. raises the fast, slow and capacity alerts (D37) and sets the status: Healthy, Investigate or Data issue
-  5. runs the promotion check, Champion against Challenger (D32, D33)
+  5. runs the promotion check, Champion against each Challenger (D32, D33); if two pass together,
+     the one with the lower 12-month MAPE is recommended (D51)
   6. on the live run, makes the next forecast from the production model, with a fallback (D34, D38),
      records the model version and last retraining date (D39)
 
@@ -29,6 +30,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import forecast_next as fn  # next forecasts, fitted as in the backtest
+import bottom_up as bu      # bottom-up forecasts (D50, D51)
 
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN, EXTRACTED, MODEL = ROOT / "data" / "clean", ROOT / "data" / "extracted", ROOT / "data" / "model"
@@ -76,13 +78,19 @@ def main() -> None:
     capacity = {(r["month"], r["area"]): r for r in csv.DictReader(open(CLEAN / "capacity_hold_monthly.csv"))}
     forecasts = {(r["market"], r["model"], r["month"]): float(r["forecast_m"]) * 1e6
                  for r in csv.DictReader(open(MODEL / "model_comparison.csv"))}
+    forecasts.update({(r["market"], bu.NAME_A, r["month"]): float(r["A_baccarat_luck_out_m"]) * 1e6
+                      for r in csv.DictReader(open(MODEL / "bottom_up_backtest.csv")) if r["A_baccarat_luck_out_m"]})
     months = sorted(by_month)
     test_months = [m for m in months if m >= TEST_START]
+
+    # Every model in a market's registry, Champion or Challenger, past or present: all are scored each month.
+    models = {market: sorted({e["model"] for e in registry[market]} | {c for e in registry[market] for c in e["challengers"]})
+              for market in MARKETS}
 
     # Thresholds from each model's own test history (D37).
     thresholds = {}
     for market in MARKETS:
-        for model in {e[k] for e in registry[market] for k in ("model", "challenger")}:
+        for model in models[market]:
             miss = sorted(abs(first[(m, market)] - forecasts[(market, model, m)]) / first[(m, market)] for m in test_months)
             thresholds[(market, model)] = {"bad_month": miss[int(0.9 * len(miss)) - 1], "normal": sum(miss) / len(miss)}
 
@@ -115,20 +123,20 @@ def main() -> None:
         return fails, mix_fails
 
     status_rows, scored = [], {m: {} for m in MARKETS}
-    run_count = {m: 0 for m in MARKETS}
+    run_count = {}  # (market, challenger) -> months in a row passing
     for month in test_months:
         for market in MARKETS:
             prod = production_for(registry, market, month)
-            champ, chall = prod["model"], prod["challenger"]
+            champ, challs = prod["model"], prod["challengers"]
             fails, mix_fails = data_check(month, market)
-            row = {"data_to": month, "market": market, "model": champ, "version": prod["version"], "challenger": chall,
+            row = {"data_to": month, "market": market, "model": champ, "version": prod["version"], "challenger": " / ".join(challs),
                    "data_check": "; ".join(fails + mix_fails) or "pass"}
             if fails:
                 row.update(status="Data issue", alerts="data check failed")
                 status_rows.append(row)
                 continue
             actual = first[(month, market)]
-            for model in (champ, chall):
+            for model in models[market]:
                 if (market, model, month) in forecasts and not (mix_fails and model != "baseline same month last year"):
                     scored[market].setdefault(model, []).append((month, actual, forecasts[(market, model, month)]))
             hist = scored[market][champ]
@@ -153,20 +161,29 @@ def main() -> None:
                         alerts.append(f"capacity: {f_.replace('_units', 's')} {float(now[f_]) / float(before[f_]) - 1:+.1%} on a year earlier")
             row["alerts"] = "; ".join(alerts)
             row["status"] = "Investigate" if alerts else "Healthy"
-            # Promotion check (D32): needs 12 scored months for both models.
-            ch_hist = scored[market].get(chall, [])
-            if len(hist) >= 12 and len(ch_hist) >= 12:
+            # Promotion check (D32), each Challenger against the Champion: needs 12 scored months for both.
+            checks, ready = [], []
+            for chall in challs:
+                ch_hist = scored[market].get(chall, [])
+                if len(hist) < 12 or len(ch_hist) < 12:
+                    continue
                 c12, p12 = metrics([(a, ff) for _, a, ff in ch_hist[-12:]]), metrics(last12)
                 cf, pf = metrics([(a, ff) for _, a, ff in ch_hist]), metrics([(a, ff) for _, a, ff in hist])
                 ok = (c12["mape"] <= p12["mape"] - MARGIN and cf["mape"] <= pf["mape"] + LONG_TOLERANCE
                       and c12["rmse"] <= p12["rmse"] and abs(c12["bias"]) <= abs(p12["bias"]))
-                run_count[market] = run_count[market] + 1 if ok else 0
-                row["promotion_check"] = (f"Challenger passes ({run_count[market]} in a row)" if ok else "Challenger doesn't pass")
-                if run_count[market] >= RUN:
-                    upcoming = [e for e in registry[market] if e["from_forecast_month"] > month and e["model"] == chall
-                                and e.get("approved_trigger_from", "9999") <= month]
-                    row["promotion_check"] += (f": switch approved, {upcoming[0]['version']} from the {upcoming[0]['from_forecast_month']} forecast ({upcoming[0]['decision'].split(' ')[0]})"
-                                               if upcoming else ": switch recommended, needs Product Owner approval (D34)")
+                run_count[(market, chall)] = run_count.get((market, chall), 0) + 1 if ok else 0
+                checks.append(f"{chall}: " + (f"passes ({run_count[(market, chall)]} in a row)" if ok else "doesn't pass"))
+                if run_count[(market, chall)] >= RUN:
+                    ready.append((c12["mape"], chall))
+            if checks:
+                row["promotion_check"] = "; ".join(checks)
+            if ready:
+                mape12, chall = min(ready)  # tie-break: lower 12-month MAPE (D51)
+                pick = f"{chall}" + (f" (lower 12-month MAPE, {mape12:.2%})" if len(ready) > 1 else "")
+                upcoming = [e for e in registry[market] if e["from_forecast_month"] > month and e["model"] == chall
+                            and e.get("approved_trigger_from", "9999") <= month]
+                row["promotion_check"] += (f". Switch approved to {pick}: {upcoming[0]['version']} from the {upcoming[0]['from_forecast_month']} forecast ({upcoming[0]['decision'].split(' ')[0]})"
+                                           if upcoming else f". Switch recommended to {pick}, needs Product Owner approval (D34)")
             status_rows.append(row)
 
     # Live run: the newest month, plus the next forecast from each market's production model.
@@ -177,25 +194,26 @@ def main() -> None:
     # Data for the next month (newest + 1) is due by the end of the month after it: the day before newest + 3 begins.
     due = dt.date(int(shift(newest, 3)[:4]), int(shift(newest, 3)[5:]), 1) - dt.timedelta(days=1)
     late = today > due + dt.timedelta(days=LATE_DAYS)
+    rules = ("baseline same month last year", bu.NAME_A)  # no settings to re-learn
     for market in MARKETS:
         prod = production_for(registry, market, target)
         r = nxt[market]
-        champion_value = r["champion_same_month_last_year_m"]
-        challenger_value = r["challenger_m"]
+        values = {"baseline same month last year": r["champion_same_month_last_year_m"], r["challenger_model"]: r["challenger_m"]}
+        if bu.NAME_A in models[market]:
+            bu_target, bu_value = bu.next_forecast(market)
+            values[bu.NAME_A] = round(bu_value, 1) if bu_target == target and bu_value is not None else ""
         fails, mix_fails = data_check(newest, market)
-        if prod["model"] == "baseline same month last year":
-            value, note = champion_value, ""
-        elif challenger_value != "" and not mix_fails and not fails:
-            value, note = challenger_value, ""
-        else:
-            value, note = champion_value, "fallback to 'same month last year' (D34, D38)"
+        value, note = values.get(prod["model"], ""), ""
+        if prod["model"] != "baseline same month last year" and (value == "" or mix_fails or fails):
+            value, note = values["baseline same month last year"], "fallback to 'same month last year' (D34, D38)"
         log.append({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "production",
                     "model": prod["model"], "version": prod["version"], "forecast_m": value, "note": note,
-                    "last_retrained": newest if prod["model"] != "baseline same month last year" else "not applicable"})
-        other = "baseline same month last year" if prod["model"] != "baseline same month last year" else prod["challenger"]
-        log.append({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "challenger",
-                    "model": other, "version": "", "forecast_m": champion_value if other.startswith("baseline") else challenger_value,
-                    "note": "", "last_retrained": newest if not other.startswith("baseline") else "not applicable"})
+                    "last_retrained": "not applicable" if prod["model"] in rules else newest})
+        for chall in prod["challengers"]:
+            log.append({"made_with_data_to": newest, "forecast_month": target, "market": market, "role": "challenger",
+                        "model": chall, "version": "", "forecast_m": values.get(chall, ""),
+                        "note": "" if values.get(chall, "") != "" else "inputs missing",
+                        "last_retrained": "not applicable" if chall in rules else newest})
 
     with (MON / "monthly_status.csv").open("w", newline="") as fh:
         fields = ["data_to", "market", "model", "version", "challenger", "data_check", "actual_m", "forecast_m", "miss_pct",
@@ -222,7 +240,7 @@ def main() -> None:
         inv = [r["data_to"] for r in rows if r["status"] == "Investigate"]
         di = [r["data_to"] for r in rows if r["status"] == "Data issue"]
         rec = [r["data_to"] + (" (approved)" if "approved" in r.get("promotion_check", "") else "")
-               for r in rows if "switch recommended" in r.get("promotion_check", "") or "switch approved" in r.get("promotion_check", "")]
+               for r in rows if "Switch recommended" in r.get("promotion_check", "") or "Switch approved" in r.get("promotion_check", "")]
         lines.append(f"- **{market}:** {len(rows)} months. Investigate: {len(inv)} ({', '.join(inv) or 'none'}). "
                      f"Data issue: {len(di)} ({', '.join(di) or 'none'}). Switch recommended: {', '.join(rec) or 'never'}.")
     (MON / f"report_{newest}.md").write_text("\n".join(lines) + "\n")

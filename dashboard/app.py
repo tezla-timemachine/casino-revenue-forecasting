@@ -48,7 +48,7 @@ s = status[status["market"] == market].sort_values("date")
 latest = s.iloc[-1]
 nxt = log[log["market"] == market]
 prod_next = nxt[nxt["role"] == "production"].iloc[0]
-chal_next = nxt[nxt["role"] == "challenger"].iloc[0]
+chal_next = nxt[nxt["role"] == "challenger"]  # one or more (D51)
 th = thresholds[f"{market}|{latest['model']}"]
 
 # ---- 15.11 health, 15.6 production model, 15.7 version --------------------------------------------
@@ -58,15 +58,17 @@ st.markdown(f"## {market} &nbsp; <span style='background:{colour};color:white;pa
 st.caption(f"Latest data: {latest['date']:%B %Y}. Status rule: fast, slow and capacity alerts (D37); data check (D38).")
 
 st.markdown(f"**In production for the next forecast:** {prod_next['model']} ({prod_next['version']}) &nbsp;·&nbsp; "
-            f"**Challenger:** {chal_next['model']}")
+            f"**{'Challengers' if len(chal_next) > 1 else 'Challenger'}:** {' · '.join(chal_next['model'])}")
 month_label = f"{pd.to_datetime(prod_next['forecast_month']):%b %Y}"
-c = st.columns(5)
+c = st.columns(4 + len(chal_next))
 c[0].metric("Production version", prod_next["version"], help="From data/monitoring/production.json; the registry is in MLflow")
 c[1].metric(f"Forecast, {month_label}", f"${float(prod_next['forecast_m']):,.1f}m", help="From the production model" + (f". {prod_next['note']}" if isinstance(prod_next['note'], str) and prod_next['note'] else ""))
-c[2].metric(f"Challenger forecast, {month_label}", f"${float(chal_next['forecast_m']):,.1f}m")
-c[3].metric("Last retrained", prod_next["last_retrained"] if prod_next["last_retrained"] != "not applicable" else "n/a (a rule)",
-            help="Models that learn settings re-learn them monthly (D39)")
-c[4].metric("Data check, latest month", "Pass" if latest["data_check"] == "pass" else "Fail", help=latest["data_check"])
+for i, (_, ch) in enumerate(chal_next.iterrows()):
+    c[2 + i].metric(f"Challenger forecast, {month_label}", f"${float(ch['forecast_m']):,.1f}m" if pd.notna(ch["forecast_m"]) else "n/a", help=ch["model"])
+    c[2 + i].caption(ch["model"])
+c[-2].metric("Last retrained", prod_next["last_retrained"] if prod_next["last_retrained"] != "not applicable" else "n/a (a rule)",
+             help="Models that learn settings re-learn them monthly (D39)")
+c[-1].metric("Data check, latest month", "Pass" if latest["data_check"] == "pass" else "Fail", help=latest["data_check"])
 
 # ---- 15.8 latest evaluation metrics ------------------------------------------------------------
 st.subheader("Latest measures (last 12 months)")
@@ -109,7 +111,9 @@ last12 = s.tail(12)
 d[0].metric("Status this month", latest["status"])
 d[1].metric("Months flagged in the last 12", int((last12["status"] != "Healthy").sum()))
 d[2].metric("Promotion check", "Switch approved" if "approved" in str(latest["promotion_check"]) else
-            ("Challenger passes" if "passes" in str(latest["promotion_check"]) else "Champion stays"), help=str(latest["promotion_check"]))
+            ("A Challenger passes" if "passes" in str(latest["promotion_check"]) else "Champion stays"), help=str(latest["promotion_check"]))
+st.caption(f"Promotion check, latest month: {latest['promotion_check']}. Each Challenger is judged by the same rule (D32); "
+           "if two qualify together, the lower 12-month MAPE is recommended, then the Product Owner approves (D51).")
 flagged = s[s["status"] != "Healthy"][["data_to", "status", "alerts"]].rename(columns={"data_to": "Month", "status": "Status", "alerts": "Alerts"})
 st.dataframe(flagged.iloc[::-1], hide_index=True, use_container_width=True)
 

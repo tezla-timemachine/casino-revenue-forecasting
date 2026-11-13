@@ -1,18 +1,22 @@
 {
-  "LV Strip|baseline same month last year": {
-    "bad_month": 0.12362360828237413,
-    "normal": 0.0575363214686254
-  },
   "LV Strip|SARIMA + both": {
     "bad_month": 0.12715957743683737,
     "normal": 0.06145957342784672
   },
-  "Reno|baseline same month last year": {
-    "bad_month": 0.11114324625763608,
-    "normal": 0.07244725848594448
+  "LV Strip|baseline same month last year": {
+    "bad_month": 0.12362360828237413,
+    "normal": 0.0575363214686254
+  },
+  "LV Strip|bottom-up baccarat luck out": {
+    "bad_month": 0.11283035590379832,
+    "normal": 0.05284799299404449
   },
   "Reno|SARIMA + game mix": {
     "bad_month": 0.13765556299949455,
     "normal": 0.07222385987167314
+  },
+  "Reno|baseline same month last year": {
+    "bad_month": 0.11114324625763608,
+    "normal": 0.07244725848594448
   }
 }

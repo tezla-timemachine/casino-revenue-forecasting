@@ -37,6 +37,20 @@ Average error (MAPE) and average miss in $ millions (MAE). Lower is better.
 4. **Extra inputs help only a little.** Calendar and game-mix inputs narrowed the gap but did not overtake the baseline.
 5. **Tree models do not beat the baseline.** After correcting their training so it grows each month (46 to 87 months), Random Forest and XGBoost are still behind on MAPE for both markets. Random Forest is slightly better on Reno RMSE only.
 
+## 4b. Later test: bottom-up, taking baccarat luck out (D50)
+
+Forecast slots, baccarat and other tables separately. For baccarat, use last year's amount bet times a normal hold (the 24-month average), instead of last year's luck.
+
+| LV Strip | MAPE | MAE ($m) | RMSE ($m) | Bias ($m) | MAPE, last 12 months |
+|---|---|---|---|---|---|
+| Production (same month last year) | 5.75% | 43.5 | 58.8 | +10.3 | 5.39% |
+| **Bottom-up, baccarat luck out** | **5.28%** | **40.2** | **54.6** | +14.5 | **4.26%** |
+
+- **It's the first method to beat the Strip production model on all three measures.**
+- **It leans further too low,** so the promotion rule's bias guard blocks it now (July to September 2026). It would have triggered in April 2025 and June 2026.
+- **Reno: no gain.** Tables are only a fifth of Reno's win.
+- **Now the Strip's second Challenger (D51),** alongside Seasonal ARIMA + both. Recorded in MLflow.
+
 ## 5. Recommendation
 
 For now, use **"same month last year" as the production forecast** for both markets. It is the most accurate of the models tested, the simplest to explain, and the cheapest to run.

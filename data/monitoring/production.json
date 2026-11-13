@@ -1,26 +1,33 @@
 {
-  "_about": "Which model is in production for each market, and which runs alongside as the Challenger. Changed only with the Product Owner's approval (D34). The full registry moves to MLflow in Step 9.",
+  "_about": "Which model is in production for each market, and which run alongside as Challengers (one or more, D51). Changed only with the Product Owner's approval (D34). The registry is mirrored in MLflow (Step 9).",
   "LV Strip": [
     {
       "version": "V1",
       "model": "baseline same month last year",
-      "challenger": "SARIMA + both",
+      "challengers": [
+        "SARIMA + both",
+        "bottom-up baccarat luck out"
+      ],
       "from_forecast_month": "2023-03",
-      "decision": "D28, D41"
+      "decision": "D28, D41; D51 adds the second Challenger (scored on the replay from the start, like the first)"
     }
   ],
   "Reno": [
     {
       "version": "V1",
       "model": "baseline same month last year",
-      "challenger": "SARIMA + game mix",
+      "challengers": [
+        "SARIMA + game mix"
+      ],
       "from_forecast_month": "2023-03",
       "decision": "D28, D41"
     },
     {
       "version": "V2",
       "model": "SARIMA + game mix",
-      "challenger": "baseline same month last year",
+      "challengers": [
+        "baseline same month last year"
+      ],
       "from_forecast_month": "2026-11",
       "decision": "D36 (approved once monitoring runs), D33 (old model becomes Challenger)",
       "approved_trigger_from": "2026-08"

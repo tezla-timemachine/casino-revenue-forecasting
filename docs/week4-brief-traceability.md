@@ -22,7 +22,7 @@ Status key: **Done** · **Partly** · **Not started**
 | Step 7: MLflow tracking | Done | 18 runs with settings, measures, charts and models (D46) |
 | Step 8: Model selection | Done | Baseline chosen and approved (D28) |
 | Step 9: MLflow registry | Done | Strip V1 production. Reno V1 challenger, V2 production (D46) |
-| Step 10: Champion and Challenger | Done | Rule checked every month. Reno V2 in production from November 2026 (D36, D45). The Strip stays on V1 |
+| Step 10: Champion and Challenger | Done | Rule checked every month. Reno V2 in production from November 2026 (D36, D45). The Strip stays on V1, with two Challengers (D51) |
 | Step 11: Observability | Done | Monthly monitoring built and replayed. Both markets Healthy (data to Sep 2026) |
 | Step 12: Data quality monitoring | Done | Checks run before every forecast. Tested on a broken month |
 | Step 13: Drift | Done | Fast, slow and capacity alerts run monthly |
@@ -232,7 +232,7 @@ These are referred to throughout.
 - **Specifics:**
   - The promotion rule (D32, D33) runs every month in monitoring.
   - Reno's Challenger met it, and the Product Owner approved the switch (D36). Reno V2 is in production from the November 2026 forecast (D45).
-  - The Strip's Challenger doesn't meet it, so the Strip stays on V1.
+  - Neither Strip Challenger meets it now, so the Strip stays on V1 (D51).
 - **Decisions:** D28, D32, D33, D36, D45
 
 ---
@@ -531,6 +531,7 @@ These are referred to throughout.
   | Seasonal ARIMA + both | 45.7 | 58.4 | 6.1% | 5.0 | 6.4 | 7.8% | 0.66–0.85 |
   | Random Forest | 50.0 | 65.7 | 6.7% | 4.9 | **6.1** | 7.5% | 0.19 |
   | XGBoost | 52.3 | 70.3 | 7.1% | 5.2 | 6.4 | 7.9% | 0.16 |
+  | Bottom-up, baccarat luck out (D50) | **40.2** | **54.6** | **5.28%** | 4.8 | 6.2 | 7.24% (tables) | under 0.01 |
   | LSTM | not tested | | | | | | |
 
   *Random Forest and XGBoost: corrected run, 12 Nov 2026 (see 5.3).*
@@ -700,15 +701,17 @@ These match the monitoring forecasts exactly, which was the check that the regis
 - **Specifics:** Champion = "same month last year" (D28)
 
 **10.2 "Train another model as the Challenger."**
-- **Status:** Done (D41)
+- **Status:** Done (D41, D51)
 - **Specifics:**
-  - Strip: Seasonal ARIMA + both (calendar and game mix).
+  - Strip, two Challengers (D51):
+    - Seasonal ARIMA + both (calendar and game mix): picks up growth.
+    - Bottom-up, baccarat luck out (D50): last year's baccarat amount bet × normal hold.
   - Reno: Seasonal ARIMA + game mix.
   - When Reno switches (D36), "same month last year" becomes Reno's Challenger.
 
 **10.3 "Both models should make predictions on the same new data."**
 - **Status:** Done
-- **Specifics:** every monitoring run forecasts with both the Champion and the Challenger, on the same new month (`forecast_log.csv`)
+- **Specifics:** every monitoring run forecasts with the Champion and every Challenger, on the same new month (`forecast_log.csv`). November 2026, Strip: production $784.3m, Seasonal ARIMA + both $776.6m, bottom-up $796.8m
 
 **10.4 "Compare their performance over several periods."**
 - **Status:** Partly
@@ -731,6 +734,7 @@ These match the monitoring forecasts exactly, which was the check that the regis
 **10.5 "The Challenger should only replace the Champion if it consistently performs better according to the agreed evaluation criteria."**
 - **Status:** Done
 - **Specifics:** monitoring runs the agreed check (D32) every month. Reno's Challenger passed 4 checks in a row. The switch was approved (D36), and Reno V2 is in production from the November 2026 forecast (D45).
+- **Two Challengers (D51):** each is checked separately. If both qualify in the same month, the lower 12-month MAPE is recommended. Strip replay: bottom-up qualifies Apr–Jun 2025 and Jun 2026; neither passes now (bias guard), so the Strip stays on V1.
 
 **10.6 "The student should define the rules for model promotion."**
 - **Status:** Done (D32)
@@ -951,7 +955,7 @@ These match the monitoring forecasts exactly, which was the check that the regis
 |---|---|---|---|
 | 15.1 | "Create a dashboard for model monitoring." | Done | One page, with a market picker |
 | 15.2 | Actual revenue | Done | "Actual against forecast" chart |
-| 15.3 | Forecast revenue | Done | Same chart, plus the next forecast from the production model and the Challenger |
+| 15.3 | Forecast revenue | Done | Same chart, plus the next forecast from the production model and each Challenger (two on the Strip) |
 | 15.4 | Forecast error | Done | Monthly miss bars, with bad months in red |
 | 15.5 | Historical revenue trends | Done | "Historical revenue, 2015 to now", with the 2020–21 gap shown |
 | 15.6 | The current production model | Done | "In production for the next forecast" |
