@@ -30,7 +30,7 @@ Status key: **Done** · **Partly** · **Not started**
 | Step 15: Dashboard | Done | Streamlit, on your computer, both markets (D47) |
 | Step 16: Product decisions | Done | All seven 'explain' points decided (D28, D31 to D34, D38 to D40) |
 | Step 17: Risks | Partly | All seven risks seen in our project. Register to write |
-| Step 18: Deliverables | 14 done, 1 not started (GitHub) | See the Step 18 table |
+| Step 18: Deliverables | All 15 done | See the Step 18 table |
 
 ### Decisions (all ten made on 12 November 2026)
 
@@ -42,7 +42,7 @@ Status key: **Done** · **Partly** · **Not started**
 6. ~~The retraining policy~~: **decided (D39)**: monthly routine retraining, plus a yearly review and a review on alerts
 7. ~~Who approves a replacement~~: **decided (D34)**: the Product Owner, after an evidence pack, with Finance consulted. Emergency fallback to the simple model is allowed
 8. ~~LSTM~~: **not tried, by choice (D42)**
-9. ~~GitHub~~: **public, when created (D43)**
+9. ~~GitHub~~: **public, created (D43, D49)**
 10. ~~Dashboard~~: **on your computer first (D44)**
 
 ### Corrections made on 12 November 2026, while checking against the brief
@@ -1055,5 +1055,5 @@ These match the monitoring forecasts exactly, which was the check that the regis
 | 18.11 | Model drift monitoring | Done | Step 13 |
 | 18.12 | A retraining strategy | Done | Step 14. Policy decided and tested (D39) |
 | 18.13 | A model monitoring dashboard | Done | Step 15 |
-| 18.14 | A GitHub repository | Not started | It will be public (D43). Not created yet: nothing is pushed until you ask |
+| 18.14 | A GitHub repository | Done | https://github.com/tezla-timemachine/casino-revenue-forecasting (public, D49) |
 | 18.15 | A short document explaining why the final production model was selected | Done | `docs/week4-model-comparison.md`, corrected today. Still to add: the factor table from 6.9 |
