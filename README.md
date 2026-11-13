@@ -19,8 +19,9 @@ Forecasts are two months ahead, because the Board publishes about four weeks aft
 
 | Document | What it covers |
 |---|---|
+| [The brief, with what we did](docs/week4-brief-what-we-did.docx) ([PDF](docs/week4-brief-what-we-did.pdf)) | The original brief, unchanged, with a short 'What we did' box under every point. The easiest way in |
 | [Brief, bullet by bullet](docs/week4-brief-traceability.md) | Every point of the brief, with its status and evidence |
-| [Decision log](docs/week4-decision-log.md) | Every decision (D1 to D48): what, why, who |
+| [Decision log](docs/week4-decision-log.md) | Every decision (D1 to D54): what, why, who |
 | [Model comparison](docs/week4-model-comparison.md) | Why the production model was chosen |
 | [Exploratory analysis](docs/week4-exploratory-analysis.md) | Trends, seasons, capacity and hold, 2015 to 2026 |
 | [Report catalogue](docs/week4-report-catalogue.md) and [fields](docs/week4-report-fields.md) | The Board's reports, their layouts and fields |
@@ -41,6 +42,29 @@ python3 scripts/fetch_board_reports.py --start 2015-01 --end 2019-12 --download
 ```
 
 The clean data, backtest results and monitoring outputs are already in `data/`, so the dashboard runs without downloading anything.
+
+## Monthly routine (run by hand, D54)
+
+**When:** the first working day of each month. The Board publishes each month's figures by the end of the following month, so on 1 December the October figures should be out. If they aren't, run again on the 8th: monitoring raises the late-data alert 7 days after the due date (D38).
+
+```bash
+python3 scripts/fetch_arr.py --download                # 1. download the new month's reports
+python3 scripts/fetch_board_reports.py --download
+.venv/bin/python scripts/extract_reports.py            # 2. read them two ways and build the clean tables
+.venv/bin/python scripts/build_table.py
+.venv/bin/python scripts/build_game_types.py
+.venv/bin/python scripts/extract_capacity_hold.py
+python3 scripts/build_calendar.py                      # 3. features
+.venv/bin/python scripts/build_features.py
+.venv/bin/python scripts/compare_models.py             # 4. score the models on the new month
+.venv/bin/python scripts/bottom_up.py
+.venv/bin/python scripts/monitor.py                    # 5. checks, alerts, promotion check, next forecast and range
+.venv/bin/streamlit run dashboard/app.py --server.port 8504   # 6. review the dashboard
+```
+
+**Then:** read `data/monitoring/report_<month>.md`. If a market shows **Investigate** or **Data issue**, the analyst explains the cause within the month (D37, D38). A switch recommendation goes to the Product Owner (D34).
+
+Not yet run on a new month: the first real run is when the October 2026 figures are published (due by 30 November 2026).
 
 ## Layout
 

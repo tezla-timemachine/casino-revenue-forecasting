@@ -27,7 +27,7 @@
 | R9 | Forecasts lean too low | High | Medium | **Medium** | Analyst |
 | R10 | The Board changes its report layout | Medium | High | **Low** | Analyst |
 | R11 | Published figures are revised later | Medium | Low | **Low** | Analyst |
-| R12 | Runs on one computer, started by hand | Medium | Medium | **Medium** | Delivery Lead |
+| R12 | Runs on one computer, started by hand | Medium | Medium | **Medium** (kept manual, D54) | Delivery Lead |
 
 R1 to R7 are the brief's risks (17.2 to 17.8). R8 to R12 are extra risks we met in this project.
 
@@ -169,14 +169,15 @@ R1 to R7 are the brief's risks (17.2 to 17.8). R8 to R12 are extra risks we met 
   - Code, data and documents are on GitHub (D49).
   - The README rebuilds everything.
   - The late-data alert (D38) shows only when monitoring is run.
+  - **Kept manual by choice (D54)**, with a written monthly routine in the README: run on the first working day of each month, again on the 8th if the figures are late.
 - **Why Medium:** if nobody runs it, nothing alerts. R7's protection depends on this.
-- **Next:** schedule the monthly run, or host it. That sends data off this computer, so it needs approval (D44).
+- **Next:** none for now. Revisit at the yearly review (D39): an automatic schedule on this computer, or hosting (needs approval, D44).
 
 ## Open actions
 
 | Priority | Action | Risk |
 |---|---|---|
 | ~~1~~ | ~~Show a range with every forecast~~: **done (D53)** | R6, R8 |
-| 2 | Schedule the monthly monitoring run | R12, R7 |
+| ~~2~~ | ~~Schedule the monthly monitoring run~~: **kept manual, with a written routine (D54)** | R12, R7 |
 | 3 | Test a growth adjustment for bias | R9, R8 |
 | 4 | Yearly review: test capacity and hold as inputs | R2 |
