@@ -29,7 +29,7 @@ Status key: **Done** · **Partly** · **Not started**
 | Step 14: Retraining | Done | Monthly retraining runs in monitoring. Yearly and alert-triggered reviews |
 | Step 15: Dashboard | Done | Streamlit, on your computer, both markets (D47) |
 | Step 16: Product decisions | Done | All seven 'explain' points decided (D28, D31 to D34, D38 to D40) |
-| Step 17: Risks | Partly | All seven risks seen in our project. Register to write |
+| Step 17: Risks | Done (D52) | Risk register: the brief's 7 risks plus 5 of our own. Biggest open: forecasts have no range |
 | Step 18: Deliverables | All 15 done | See the Step 18 table |
 
 ### Decisions (all ten made on 12 November 2026)
@@ -1026,19 +1026,18 @@ These match the monitoring forecasts exactly, which was the check that the regis
 ## Step 17: Risks
 
 **17.1 "Document the main risks."**
-- **Status:** Partly
-- **What exists:** the limits section of `docs/week4-model-comparison.md`
-- **To do:** a short risk register, using the table below
+- **Status:** Done, approved (D52, `docs/week4-risk-register.md`)
+- **Specifics:** 12 risks, each with what we saw in this project, the protection, likelihood, impact, what's left, an owner and the next step. R1 to R7 are the brief's seven. R8 to R12 are extra risks we met.
 
-| # | Risk (the brief's words) | Seen in our project? | What protects against it | Status of protection |
+| # | Risk (the brief's words) | Seen in our project? | What protects against it | Left over |
 |---|---|---|---|---|
-| 17.2 | "The model may perform well during training but poorly on future data." | Yes. The tree models fitted their training months well but didn't beat the baseline on unseen months | Every model is judged only on months it never saw (43-month backtest) | Done. Ongoing monitoring not started |
-| 17.3 | "Historical patterns may change." | Yes: growth slowed to about 1% a year, Strip machines fell 20%, and the COVID years were very different | 2020–21 left out (D23). Drift checks (Step 13) | Partly |
-| 17.4 | "Seasonal behaviour may affect performance." | Yes: December is about 10% above an average month, and February and August are below | The production model is built on the seasons. Calendar inputs were tested | Done |
-| 17.5 | "Missing monthly data may produce incorrect forecasts." | Yes: January 2025's table is a picture, the June and July 2025 reports are partly unreadable, and the data always arrives four weeks late | Two-month-ahead forecasts (D19). Data checks (Step 12). A rule for what happens when data is bad | Partly. The rule isn't decided |
-| 17.6 | "A new model may perform better on one period but worse overall." | Yes, right now: the Challengers beat the Champion over the last 12 months but not over the full test | A promotion rule that needs both | Proposed |
-| 17.7 | "The business may trust forecasts without reviewing uncertainty." | Yes: forecasts are single numbers today | Show a range with every forecast. For the Strip, a typical miss is 4.1% and a bad month is over 12.4% | Not started |
-| 17.8 | "The model may remain in production even after its performance has degraded." | Not yet observed | Monthly monitoring, a health status, and review triggers (Steps 11, 13, 14) | Not started |
+| 17.2 | "The model may perform well during training but poorly on future data." | Yes: the tree models lost to the baseline on unseen months | Every model judged only on months it never saw (43-month backtest) | Low |
+| 17.3 | "Historical patterns may change." | Yes: COVID, growth stalled, Strip machines −20%, a stronger December | Slow and capacity alerts (D37), monthly retraining and reviews (D39) | Medium |
+| 17.4 | "Seasonal behaviour may affect performance." | Yes: December peak, February and August low | Production carries the season by design; Seasonal ARIMA | Low |
+| 17.5 | "Missing monthly data may produce incorrect forecasts." | Yes: January 2025 picture table, unreadable 2025 pages, four-week delay | Two months ahead (D19), bad-data rule and fallback (D38, D34), late alert | Low |
+| 17.6 | "A new model may perform better on one period but worse overall." | Yes: Reno's Challenger met a simple rule in Oct 2024, then did worse in 2025 | Promotion rule with margin, full-test check and 3 in a row (D32), way back (D33) | Low |
+| 17.7 | "The business may trust forecasts without reviewing uncertainty." | Yes: forecasts are single numbers | Past misses on the dashboard only. **Next: a range with every forecast** | **High** |
+| 17.8 | "The model may remain in production even after its performance has degraded." | Not on production so far | Monthly monitoring, alerts, way back, emergency fallback (D33, D34, D37, D45) | Low |
 
 ---
 
